@@ -35,7 +35,7 @@ You are allowed and encouraged to use this software on the IEEE Very Small Size 
 [imgui]: https://github.com/ocornut/imgui/
 [travis]: https://travis-ci.org/SIRLab/VSS-SampleStrategy
 [samplestrategy]: https://github.com/SIRLab/VSS-SampleStrategy
-[install]: https://github.com/SIRLab/VSS-SampleStrategy/blob/master/INSTALL.md
+[install]: https://github.com/SIRLab/VSS-Joystick/blob/master/INSTALL.md
 [youtube]: https://www.youtube.com/watch?v=qYsNPGvAuME
 [vss-vision]: https://github.com/SIRLab/VSS-Vision
 [vss-simulator]: https://github.com/SIRLab/VSS-Simulator
