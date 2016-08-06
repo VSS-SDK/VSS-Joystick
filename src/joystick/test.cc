@@ -11,7 +11,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-#include "joystick.hh"
+/*#include "joystick.hh"
 #include <unistd.h>
 
 int main(int argc, char** argv)
@@ -47,4 +47,4 @@ int main(int argc, char** argv)
       }
     }
   }
-}
+}*/
