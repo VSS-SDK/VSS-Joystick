@@ -42,6 +42,8 @@ void Dualshock3::thread_left_x(){
             // normalize value 0 to 100
             left.axis[X] = left.axis[X]/MAX_VAL * 100.0;
         }
+
+        left.axis[X] /= 1.0001;
         
         usleep(delay);
     }
@@ -56,8 +58,9 @@ void Dualshock3::thread_left_y(){
             
             // normalize value 0 to 100
             left.axis[Y] = left.axis[Y]/MAX_VAL * -100.0;
-            
         }
+
+        left.axis[Y] /= 1.0001;
 
         usleep(delay);
     }
