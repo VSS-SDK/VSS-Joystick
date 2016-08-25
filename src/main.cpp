@@ -60,7 +60,7 @@ public:
                 // get the input from dualshock3
                 left = ds3.get_axis_left();
                 right = ds3.get_axis_right();
-                ds3.show();
+                //ds3.show();
 
                 // palce the controlable robot in the packet
                 vss_command::Robot_Command *robot = global_commands.add_robot_commands();
@@ -81,7 +81,7 @@ public:
                 usleep(1000);
             }
         }else{
-
+            // call your communication here
         }
     }
 };
