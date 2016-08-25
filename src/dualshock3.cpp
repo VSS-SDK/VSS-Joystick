@@ -19,36 +19,30 @@ void Dualshock3::init(){
     if(joystick.isFound()){
         left_thread_x = new thread(bind(&Dualshock3::thread_left_x, this));
         left_thread_y = new thread(bind(&Dualshock3::thread_left_y, this));
-        right_thread_x = new thread(bind(&Dualshock3::thread_right_x, this));
-        right_thread_y = new thread(bind(&Dualshock3::thread_right_y, this));
+        //right_thread_x = new thread(bind(&Dualshock3::thread_right_x, this));
+        //right_thread_y = new thread(bind(&Dualshock3::thread_right_y, this));
 
         left_thread_x->join();
         left_thread_y->join();
-        right_thread_x->join();
-        right_thread_y->join();
+        //right_thread_x->join();
+        //right_thread_y->join();
     }
 }
 
 
 void Dualshock3::thread_left_x(){
+    int value[50];
+    int i;
     while(true){
         JoystickEvent event;
         joystick.sample(&event);
         if (event.isAxis() && event.number == 0){
             left.axis[X] = event.value;
-            count_left_x = 0;
-            count_left_y = 0;
-        }else{
-            count_left_x++;
-
-            if(count_left_x > 500 && fabs(left.axis[X]) < MAX_VAL/2.0){
-                left.axis[X] = 0;
-            }
+            
+            // normalize value 0 to 100
+            left.axis[X] = left.axis[X]/MAX_VAL * 100.0;
         }
-
-        // normalize value 0 to 100
-        left.axis[X] = left.axis[X]/MAX_VAL * 100.0;
-
+        
         usleep(delay);
     }
 }
@@ -59,18 +53,11 @@ void Dualshock3::thread_left_y(){
         joystick.sample(&event);
         if (event.isAxis() && event.number == 1){
             left.axis[Y] = event.value;
-            count_left_x = 0;
-            count_left_y = 0;
-        }else{
-            count_left_y++;
             
-            if(count_left_y > 500 && fabs(left.axis[Y]) < MAX_VAL/2.0){
-                left.axis[Y] = 0;
-            }
+            // normalize value 0 to 100
+            left.axis[Y] = left.axis[Y]/MAX_VAL * -100.0;
+            
         }
-
-        // normalize value 0 to 100
-        left.axis[Y] = left.axis[Y]/MAX_VAL * -100.0;
 
         usleep(delay);
     }

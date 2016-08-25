@@ -17,6 +17,7 @@ using namespace std;
 #define MAX_VAL 32767.0
 
 enum { X = 0, Y = 1 };
+enum { SIMULATOR = 0, REAL = 1 };
 
 struct JoyAxis{
     float axis[2];

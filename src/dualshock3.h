@@ -23,6 +23,7 @@ protected:
     JoyAxis left, right;
 
     int delay;
+    bool on_left_x, on_left_y;
     int count_left_x, count_left_y;
     int count_right_x, count_right_y;
 
