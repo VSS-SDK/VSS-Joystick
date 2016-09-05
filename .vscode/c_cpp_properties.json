@@ -2,6 +2,7 @@
     "configurations": [
         {
             "name": "Mac",
+<<<<<<< HEAD
             "includePath": ["/usr/include"],
             "browse" : {
                 "limitSymbolsToIncludedHeaders" : true,
@@ -23,6 +24,17 @@
                 "limitSymbolsToIncludedHeaders" : true,
                 "databaseFilename" : ""
             }
+=======
+            "includePath": ["/usr/include"]
+        },
+        {
+            "name": "Linux",
+            "includePath": ["/usr/include", "/usr/local/include"]
+        },
+        {
+            "name": "Win32",
+            "includePath": ["c:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include"]
+>>>>>>> 91a45740ced1c01791e75311f9f041d4c6fbe823
         }
     ],
     "clang_format" : {
