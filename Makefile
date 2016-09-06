@@ -5,7 +5,7 @@ INCLUDES = -Isrc
 
 LIBRARIES_PROTO = `pkg-config --cflags --libs protobuf`
 
-LIBRARIES = $(LIBRARIES_PROTO) $(LIBRARIES_GLUT) $(LIBRARIES_BOOST) -lzmq -pthread -lm -lc -w
+LIBRARIES = $(LIBRARIES_PROTO) -lzmq -pthread -lm -lc -w
 
 
 
