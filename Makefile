@@ -19,7 +19,8 @@ FILE_NAMES = $(FILE_NAMES_SRC) $(FILE_NAMES_PROTOS)
 
 
 
-EXEC = VSS-Joystick
+RELEASE = VSS-Joystick
+DEBUG = VSS-Joystick-Debug
 
 .cpp.o:
 	@$(CCX) $(INCLUDES) $(LIBRARIES) -Wall -Wformat -ffast-math -c -o $@ $< -w
@@ -27,7 +28,7 @@ EXEC = VSS-Joystick
 .cc.o:
 	@$(CCX) $(INCLUDES) $(LIBRARIES) -Wall -Wformat -ffast-math -c -o $@ $< -w
 
-all: message_compiling $(EXEC)
+all: message_compiling $(RELEASE)
 	@echo Done ...
 	
 message_compiling:
@@ -37,13 +38,16 @@ message_cleaning:
 	@echo Cleaning VSS-Joystick ...
 
 run:
-	./$(EXEC)
+	./$(RELEASE)
 
-$(EXEC): $(FILE_NAMES)
-	@$(CCX) -o $(EXEC) $(FILE_NAMES) $(LIBRARIES) $(INCLUDES)
+$(RELEASE): $(FILE_NAMES)
+	@$(CCX) -o $(RELEASE) $(FILE_NAMES) $(LIBRARIES) $(INCLUDES)
+
+build_debug: 
+	$(CCX) -g $(shell find -name '*.cpp') $(shell find -name '*.cc') $(LIBRARIES) $(INCLUDES) -o $(DEBUG)
 
 clean: message_cleaning
-	@rm $(EXEC) $(FILE_NAMES)
+	@rm $(RELEASE) $(FILE_NAMES)
 
 proto:
 	cd src/VSS-Interface/protos && make -f protos.make
