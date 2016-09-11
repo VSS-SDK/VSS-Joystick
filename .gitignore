@@ -23,21 +23,14 @@
 *.a
 *.lib
 
-<<<<<<< HEAD
-# Junk Files
-.vscode/.browse.VC*
-*.pb.cc
-*.pb.h
-
-=======
 # Remove Junk Files
 *.vscode/.browse.VC.*
 *.pb.cc
 *.pb.h
 
-
->>>>>>> 91a45740ced1c01791e75311f9f041d4c6fbe823
 # Executables
 *.exe
 *.out
 *.app
+VSS-Joystick
+VSS-Joystick-Debug
