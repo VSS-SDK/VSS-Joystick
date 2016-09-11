@@ -1,6 +1,8 @@
 VSS-Joystick
 ============
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)][gpl3]
+[![Build Status](https://travis-ci.org/SIRLab/VSS-Joystick.svg?branch=master)][travis]
+[![Link: Youtube](https://img.shields.io/badge/Link-Youtube-red.svg)][youtube]
 
 Installation
 ------------
@@ -41,7 +43,7 @@ You are allowed and encouraged to use this software on the IEEE Very Small Size 
 [travis]: https://travis-ci.org/SIRLab/VSS-SampleStrategy
 [samplestrategy]: https://github.com/SIRLab/VSS-SampleStrategy
 [install]: https://github.com/SIRLab/VSS-Joystick/blob/master/INSTALL.md
-[youtube]: https://www.youtube.com/watch?v=qYsNPGvAuME
+[youtube]: https://www.youtube.com/watch?v=KJb4MIfrmH8
 [vss-vision]: https://github.com/SIRLab/VSS-Vision
 [vss-simulator]: https://github.com/SIRLab/VSS-Simulator
 [vss-viewer]: https://github.com/SIRLab/VSS-Viewer
