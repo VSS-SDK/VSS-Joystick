@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 VSS-Joystick
 ============
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)][gpl3]
@@ -48,9 +47,6 @@ You are allowed and encouraged to use this software on the IEEE Very Small Size 
 [vss-viewer]: https://github.com/SIRLab/VSS-Viewer
 [vss-sample]: https://github.com/SIRLab/VSS-SampleStrategy
 [sirlab_site]: http://sirlab.github.io/vss.html
-=======
-VSS-Interface
--------------
-Interface que possibilita a comunicação entre os projetos do VSS-SDK.
 
->>>>>>> 91a45740ced1c01791e75311f9f041d4c6fbe823
+
+
