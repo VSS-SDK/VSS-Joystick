@@ -13,6 +13,7 @@
 
 #include "thread"
 #include "unistd.h"
+#include "boost.h"
 
 using namespace std;
 
@@ -20,7 +21,6 @@ class Core{
 protected:
     Dualshock3 ds3;
     Interface interface;    // send data to VSS-Simulator
-    //Communication com;    // send data to real robots
 
     thread *thread_ds3, *thread_com;
 
@@ -81,12 +81,45 @@ public:
                 usleep(1000);
             }
         }else{
-            // call your communication here
+            cerr << "You must implement your own communication..." << endl;
         }
     }
 };
 
-int main(){
-    Core core;
-    core.init(SIMULATOR/*REAL*/);
+bool argParse(int argc, char** argv, bool *real);
+
+int main(int argc, char** argv){
+    bool real;
+    if( argParse(argc, argv, &real) ){
+        Core core;
+
+        if(real)
+            core.init(REAL);
+        else
+            core.init(SIMULATOR);
+    }
+}
+
+bool argParse(int argc, char** argv, bool *real){
+    namespace bpo = boost::program_options;
+
+    // Declare the supported options.
+    bpo::options_description desc("Allowed options");
+    desc.add_options()
+        ("help,h", "(Optional) produce help message")
+        ("real,r", "(Optional) Send command to real robots.");
+    bpo::variables_map vm;
+    bpo::store(bpo::parse_command_line(argc, argv, desc), vm);
+    bpo::notify(vm);
+
+    if (vm.count("help")){
+        std::cout << desc << std::endl;
+        return false;
+    }
+
+    if (vm.count("real")){
+        *real = true;
+    }
+
+    return true;
 }

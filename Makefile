@@ -4,8 +4,9 @@ CCX = g++ -std=c++11 -w
 INCLUDES = -Isrc 
 
 LIBRARIES_PROTO = `pkg-config --cflags --libs protobuf`
+LIBRARIES_BOOST = -lboost_system -lboost_filesystem -lboost_program_options -lboost_thread
 
-LIBRARIES = $(LIBRARIES_PROTO) -lzmq -pthread -lm -lc -w
+LIBRARIES = $(LIBRARIES_PROTO) $(LIBRARIES_BOOST) -lzmq -pthread -lm -lc -w
 
 
 
