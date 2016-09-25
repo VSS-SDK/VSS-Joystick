@@ -6,7 +6,7 @@ VSS-Joystick
 ------------------------------
 **Install Standard Packages:**
 ```
-$ sudo apt-get update && apt-get upgrade
+$ sudo apt-get update && sudo apt-get upgrade
 $ sudo apt-get install pkg-config
 $ sudo apt-get install g++ cmake git libzmq3 libzmq3-dev protobuf-compiler libprotobuf-dev
 ```
@@ -15,7 +15,7 @@ $ sudo apt-get install g++ cmake git libzmq3 libzmq3-dev protobuf-compiler libpr
 ------------------------------
 **Install Standard Packages:**
 ```
-$ sudo apt-get update && apt-get upgrade
+$ sudo apt-get update && sudo apt-get upgrade
 $ sudo apt-get install pkgconf
 $ sudo apt-get install g++ cmake git libzmq3 libzmq3-dev protobuf-compiler libprotobuf-dev
 ```
