@@ -21,6 +21,7 @@ class Core{
 protected:
     Dualshock3 ds3;
     Interface interface;    // send data to VSS-Simulator
+    string ip;
 
     thread *thread_ds3, *thread_com;
 
@@ -33,8 +34,10 @@ public:
         type = SIMULATOR;
     } 
 
-    void init(int type){
+    void init(int type, string ip){
         this->type = type;
+        this->ip = "tcp://" + ip + ":5556";
+        cout << this->ip << endl;
 
         thread_ds3 = new thread(bind(&Core::ds3_thread, this));
         thread_com = new thread(bind(&Core::com_thread, this));
@@ -49,7 +52,7 @@ public:
 
     void com_thread(){
         if(type == SIMULATOR){
-            interface.createSendCommandsTeam1(&global_commands);
+            interface.createSendCommandsTeam1(&global_commands, ip);
             
             while(true){
                 // flush and init the packet
@@ -86,27 +89,29 @@ public:
     }
 };
 
-bool argParse(int argc, char** argv, bool *real);
+bool argParse(int argc, char** argv, bool *real, string *ip);
 
 int main(int argc, char** argv){
+    string ip;
     bool real;
-    if( argParse(argc, argv, &real) ){
+    if( argParse(argc, argv, &real, &ip) ){
         Core core;
 
         if(real)
-            core.init(REAL);
+            core.init(REAL, ip);
         else
-            core.init(SIMULATOR);
+            core.init(SIMULATOR, ip);
     }
 }
 
-bool argParse(int argc, char** argv, bool *real){
+bool argParse(int argc, char** argv, bool *real, string *ip){
     namespace bpo = boost::program_options;
 
     // Declare the supported options.
     bpo::options_description desc("Allowed options");
     desc.add_options()
         ("help,h", "(Optional) produce help message")
+        ("ip_sender,i", bpo::value<std::string>()->default_value("localhost"), "(Optional) specify the ip of destiny.")
         ("real,r", "(Optional) Send command to real robots.");
     bpo::variables_map vm;
     bpo::store(bpo::parse_command_line(argc, argv, desc), vm);
@@ -120,6 +125,8 @@ bool argParse(int argc, char** argv, bool *real){
     if (vm.count("real")){
         *real = true;
     }
+
+    *ip = vm["ip_sender"].as<string>();
 
     return true;
 }
