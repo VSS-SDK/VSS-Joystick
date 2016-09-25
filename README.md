@@ -23,6 +23,11 @@ $ make
 $ make run
 ```
 
+
+Gallery
+-------
+![screenshot 1](https://raw.githubusercontent.com/SIRLab/VSS-Joystick/master/images/top.png)
+
 License
 -------
 
