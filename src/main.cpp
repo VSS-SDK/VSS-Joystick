@@ -37,7 +37,7 @@ public:
     void init(int type, string ip){
         this->type = type;
         this->ip = "tcp://" + ip + ":5556";
-        cout << this->ip << endl;
+        //cout << this->ip << endl;
 
         thread_ds3 = new thread(bind(&Core::ds3_thread, this));
         thread_com = new thread(bind(&Core::com_thread, this));
