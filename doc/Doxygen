@@ -771,7 +771,7 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = ../src/main.cpp ../src/dualshock3.h ../src/dualshock3.cpp ../src/commons.h ../src/boost.h ../src/joystick/joystick.cc ../src/joystick/joystick.hh ../src/VSS-Interface/interface.h ../src/VSS-Interface/interface.cpp ../src/VSS-Interface/protos/command.proto ../src/VSS-Interface/protos/command.pb.cc ../src/VSS-Interface/protos/command.pb.h ../src/VSS-Interface/protos/debug.proto ../src/VSS-Interface/protos/debug.pb.cc ../src/VSS-Interface/protos/debug.pb.h ../src/VSS-Interface/protos/state.proto ../src/VSS-Interface/protos/state.pb.cc ../src/VSS-Interface/protos/state.pb.h
+INPUT                  = ../src/main.cpp ../src/reader_control_joy.h ../src/core.h ../src/core.cpp ../src/reader_control_joy.cpp ../src/commons.h ../src/boost.h ../src/joystick/joystick.cc ../src/joystick/joystick.hh ../src/VSS-Interface/interface.h ../src/VSS-Interface/interface.cpp ../src/VSS-Interface/protos/command.proto ../src/VSS-Interface/protos/command.pb.cc ../src/VSS-Interface/protos/command.pb.h ../src/VSS-Interface/protos/debug.proto ../src/VSS-Interface/protos/debug.pb.cc ../src/VSS-Interface/protos/debug.pb.h ../src/VSS-Interface/protos/state.proto ../src/VSS-Interface/protos/state.pb.cc ../src/VSS-Interface/protos/state.pb.h
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses

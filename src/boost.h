@@ -5,6 +5,7 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/make_shared.hpp>
 
+//! Atribuição de um namespace de forma simplificada
 namespace bpo = boost::program_options;
 
 #endif
