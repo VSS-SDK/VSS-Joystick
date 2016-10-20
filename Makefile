@@ -55,6 +55,9 @@ proto:
 
 help: 
 	./$(EXEC) -h
+
+docm:
+	cd doc && doxygen Doxygen
 #teste: 
 #	$(SRC)
 
