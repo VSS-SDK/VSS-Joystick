@@ -10,6 +10,13 @@ addons:
   apt:
     packages:
       - build-essential
+      - git
+      - cmake
+      - gcc-4.8
+      - g++-4.8
+      - protobuf-compiler
+      - libprotobuf-dev
+
 script:
   - make proto
   - make
