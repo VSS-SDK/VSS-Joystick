@@ -1,5 +1,3 @@
-sudo: true
-
 language: cpp
 
 compiler:
@@ -14,8 +12,6 @@ addons:
       - build-essential
       - git
       - cmake
-      - gcc-4.8
-      - g++-4.8
       - protobuf-compiler
       - libprotobuf-dev
 
