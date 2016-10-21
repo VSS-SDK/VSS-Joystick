@@ -1,0 +1,117 @@
+\hypertarget{classReaderControlJoy}{}\section{Referência da Classe Reader\+Control\+Joy}
+\label{classReaderControlJoy}\index{Reader\+Control\+Joy@{Reader\+Control\+Joy}}
+
+
+Essa classe é responsável poder interpretar os valores obtidos de qualquer joystick usb.  
+
+
+
+
+{\ttfamily \#include $<$reader\+\_\+control\+\_\+joy.\+h$>$}
+
+
+
+Diagrama de colaboração para Reader\+Control\+Joy\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classReaderControlJoy__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classReaderControlJoy_a1e11643f1bbb7216c7d49bc4f71d9cf0}{Reader\+Control\+Joy} ()\hypertarget{classReaderControlJoy_a1e11643f1bbb7216c7d49bc4f71d9cf0}{}\label{classReaderControlJoy_a1e11643f1bbb7216c7d49bc4f71d9cf0}
+
+\begin{DoxyCompactList}\small\item\em Construcot D\+E\+F\+A\+U\+LT. \end{DoxyCompactList}\item 
+void \hyperlink{classReaderControlJoy_ad73902de35a2805df6668e7838483497}{init} ()
+\begin{DoxyCompactList}\small\item\em Método responsável por inicializar o interpretador. \end{DoxyCompactList}\item 
+void \hyperlink{classReaderControlJoy_af302ef2987b702e00fdb47fb7fa66a96}{thread\+\_\+left\+\_\+x} ()
+\begin{DoxyCompactList}\small\item\em Método reponsável por efetuar as leituras do eixo X do analógico esquerdo. \end{DoxyCompactList}\item 
+void \hyperlink{classReaderControlJoy_a87a8111bad2612c7bc39c0c3843ec25f}{thread\+\_\+left\+\_\+y} ()
+\begin{DoxyCompactList}\small\item\em Método responsável por efetur as leituras do eixo Y do analógico direito. \end{DoxyCompactList}\item 
+\hyperlink{structJoyAxis}{Joy\+Axis} \hyperlink{classReaderControlJoy_a7b5bdaae0a6e1342c0b98bff39530edf}{get\+\_\+axis\+\_\+left} ()\hypertarget{classReaderControlJoy_a7b5bdaae0a6e1342c0b98bff39530edf}{}\label{classReaderControlJoy_a7b5bdaae0a6e1342c0b98bff39530edf}
+
+\begin{DoxyCompactList}\small\item\em Método responsável por retornar as leituras do analógico esquerdo. \end{DoxyCompactList}\item 
+void \hyperlink{classReaderControlJoy_a16d28747ea4de43f9652037b56047eeb}{show} ()\hypertarget{classReaderControlJoy_a16d28747ea4de43f9652037b56047eeb}{}\label{classReaderControlJoy_a16d28747ea4de43f9652037b56047eeb}
+
+\begin{DoxyCompactList}\small\item\em Método que pode ser utilizado para imprimir os valores do joystick no terminal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Atributos Protegidos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classJoystick}{Joystick} \hyperlink{classReaderControlJoy_a4504d5b41d99872f8b70b6fc128ef59a}{joystick}\hypertarget{classReaderControlJoy_a4504d5b41d99872f8b70b6fc128ef59a}{}\label{classReaderControlJoy_a4504d5b41d99872f8b70b6fc128ef59a}
+
+\begin{DoxyCompactList}\small\item\em Classe de acesso a um jostick. \end{DoxyCompactList}\item 
+\hyperlink{structJoyAxis}{Joy\+Axis} \hyperlink{classReaderControlJoy_a414a8cb6d2eb114839ee97f3a88923c6}{left}\hypertarget{classReaderControlJoy_a414a8cb6d2eb114839ee97f3a88923c6}{}\label{classReaderControlJoy_a414a8cb6d2eb114839ee97f3a88923c6}
+
+\begin{DoxyCompactList}\small\item\em Valores dos eixos X e Y do analógico esquerdo. \end{DoxyCompactList}\item 
+int \hyperlink{classReaderControlJoy_a5fc5159efb202046ba274921c1428859}{delay}\hypertarget{classReaderControlJoy_a5fc5159efb202046ba274921c1428859}{}\label{classReaderControlJoy_a5fc5159efb202046ba274921c1428859}
+
+\begin{DoxyCompactList}\small\item\em Delay entre as leituras. \end{DoxyCompactList}\item 
+thread $\ast$ \hyperlink{classReaderControlJoy_ad1f9eb4e3eec25ec9356e8923c23c0b8}{left\+\_\+thread\+\_\+x}\hypertarget{classReaderControlJoy_ad1f9eb4e3eec25ec9356e8923c23c0b8}{}\label{classReaderControlJoy_ad1f9eb4e3eec25ec9356e8923c23c0b8}
+
+\begin{DoxyCompactList}\small\item\em Threads de leitura do eixo X e Y do analógico esquerdo. \end{DoxyCompactList}\item 
+thread $\ast$ {\bfseries left\+\_\+thread\+\_\+y}\hypertarget{classReaderControlJoy_adcdbfb32aab9f901bf94db676a19ec02}{}\label{classReaderControlJoy_adcdbfb32aab9f901bf94db676a19ec02}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrição Detalhada}
+Essa classe é responsável poder interpretar os valores obtidos de qualquer joystick usb. 
+
+\subsection{Métodos}
+\index{Reader\+Control\+Joy@{Reader\+Control\+Joy}!init@{init}}
+\index{init@{init}!Reader\+Control\+Joy@{Reader\+Control\+Joy}}
+\subsubsection[{\texorpdfstring{init()}{init()}}]{\setlength{\rightskip}{0pt plus 5cm}void Reader\+Control\+Joy\+::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classReaderControlJoy_ad73902de35a2805df6668e7838483497}{}\label{classReaderControlJoy_ad73902de35a2805df6668e7838483497}
+
+
+Método responsável por inicializar o interpretador. 
+
+Caso um joystick esteja conectado. \index{Reader\+Control\+Joy@{Reader\+Control\+Joy}!thread\+\_\+left\+\_\+x@{thread\+\_\+left\+\_\+x}}
+\index{thread\+\_\+left\+\_\+x@{thread\+\_\+left\+\_\+x}!Reader\+Control\+Joy@{Reader\+Control\+Joy}}
+\subsubsection[{\texorpdfstring{thread\+\_\+left\+\_\+x()}{thread_left_x()}}]{\setlength{\rightskip}{0pt plus 5cm}void Reader\+Control\+Joy\+::thread\+\_\+left\+\_\+x (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classReaderControlJoy_af302ef2987b702e00fdb47fb7fa66a96}{}\label{classReaderControlJoy_af302ef2987b702e00fdb47fb7fa66a96}
+
+
+Método reponsável por efetuar as leituras do eixo X do analógico esquerdo. 
+
+Loop contendo a leitura do eixo X do analógico esquerdo
+
+Caso o evento enviado pelo joystick seja uma nova leitura do eixo X do analógico esquerdo
+
+Lê o valor obtido
+
+Normaliza o valor para algo entre 0 e 100
+
+A\+T\+E\+N\+CÃO\+: A Leitura sofre com perda de informação, por isso as vezes o valor trava. T\+O\+DO\+: Resolver. \index{Reader\+Control\+Joy@{Reader\+Control\+Joy}!thread\+\_\+left\+\_\+y@{thread\+\_\+left\+\_\+y}}
+\index{thread\+\_\+left\+\_\+y@{thread\+\_\+left\+\_\+y}!Reader\+Control\+Joy@{Reader\+Control\+Joy}}
+\subsubsection[{\texorpdfstring{thread\+\_\+left\+\_\+y()}{thread_left_y()}}]{\setlength{\rightskip}{0pt plus 5cm}void Reader\+Control\+Joy\+::thread\+\_\+left\+\_\+y (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classReaderControlJoy_a87a8111bad2612c7bc39c0c3843ec25f}{}\label{classReaderControlJoy_a87a8111bad2612c7bc39c0c3843ec25f}
+
+
+Método responsável por efetur as leituras do eixo Y do analógico direito. 
+
+Loop contendo a leitura do eixo X do analógico esquerdo
+
+Caso o evento enviado pelo joystick seja uma nova leitura do eixo Y do analógico esquerdo
+
+Lê o valor obtido
+
+Normaliza o valor para algo entre 0 e 100
+
+A\+T\+E\+N\+CÃO\+: A Leitura sofre com perda de informação, por isso as vezes o valor trava. T\+O\+DO\+: Resolver. 
+
+A documentação para esta classe foi gerada a partir dos seguintes arquivos\+:\begin{DoxyCompactItemize}
+\item 
+/home/johnathan/\+Repositories/\+S\+I\+R\+Lab/\+Projects/\+V\+S\+S-\/\+Joystick/src/reader\+\_\+control\+\_\+joy.\+h\item 
+/home/johnathan/\+Repositories/\+S\+I\+R\+Lab/\+Projects/\+V\+S\+S-\/\+Joystick/src/reader\+\_\+control\+\_\+joy.\+cpp\end{DoxyCompactItemize}

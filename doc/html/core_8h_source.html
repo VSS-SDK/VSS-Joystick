@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>VSS-Joystick: Código-Fonte de /home/johnathan/Repositories/SIRLab/Projects/VSS-Joystick/src/core.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">VSS-Joystick
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">core.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * This file is part of the VSS-Joystick project.</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * This Source Code Form is subject to the terms of the GNU GENERAL PUBLIC LICENSE,</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * v. 3.0. If a copy of the GPL was not distributed with this</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * file, You can obtain one at http://www.gnu.org/licenses/gpl-3.0/.</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> */</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef _CORE_H_</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define _CORE_H_</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;iostream&quot;</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;VSS-Interface/interface.h&quot;</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;reader_control_joy.h&quot;</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;thread&quot;</span></div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;unistd.h&quot;</span></div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classCore.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="classCore.html">Core</a>{</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">protected</span>:</div><div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classCore.html#a21f63c0f0f6fd2b4b45b2217d9069116">   26</a></span>&#160;    <a class="code" href="classReaderControlJoy.html">ReaderControlJoy</a> <a class="code" href="classCore.html#a21f63c0f0f6fd2b4b45b2217d9069116">rc_joy</a>;</div><div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classCore.html#a69d2a2f913b4a1832516e5752c655c97">   28</a></span>&#160;    <a class="code" href="classInterface.html">Interface</a> <a class="code" href="classCore.html#a69d2a2f913b4a1832516e5752c655c97">interface</a>;</div><div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classCore.html#a8b79534f9c58257910e3fce2ad36c7e2">   30</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classCore.html#a8b79534f9c58257910e3fce2ad36c7e2">ip</a>;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classCore.html#ac4b1994dc99b1b5ccc6573f6beb0e27f">   33</a></span>&#160;    thread *<a class="code" href="classCore.html#ac4b1994dc99b1b5ccc6573f6beb0e27f">thread_joy</a>;</div><div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classCore.html#a6e002cd17fe42a38d8d33e3d6ef845d9">   35</a></span>&#160;    thread *<a class="code" href="classCore.html#a6e002cd17fe42a38d8d33e3d6ef845d9">thread_com</a>;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div><div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classCore.html#a6f97de806c6e3e70a28d17e9ff91e52a">   38</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classCore.html#a6f97de806c6e3e70a28d17e9ff91e52a">type</a>;</div><div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classCore.html#a61cc704cfa74a8ac58f6c478ea856d0a">   40</a></span>&#160;    <a class="code" href="structJoyAxis.html">JoyAxis</a> <a class="code" href="classCore.html#a61cc704cfa74a8ac58f6c478ea856d0a">left</a>;</div><div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classCore.html#a4aae8e4296ffa4cc22cb28a397f36653">   42</a></span>&#160;    <a class="code" href="classvss__command_1_1Global__Commands.html">vss_command::Global_Commands</a> <a class="code" href="classCore.html#a4aae8e4296ffa4cc22cb28a397f36653">global_commands</a>;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="classCore.html">Core</a>();</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> init(<span class="keywordtype">int</span> type, <span class="keywordtype">string</span> ip);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> joy_thread();</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> com_thread();</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;};</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif // _CORE_H_</span></div><div class="ttc" id="classCore_html_a61cc704cfa74a8ac58f6c478ea856d0a"><div class="ttname"><a href="classCore.html#a61cc704cfa74a8ac58f6c478ea856d0a">Core::left</a></div><div class="ttdeci">JoyAxis left</div><div class="ttdoc">Valores obtidos na leitura do analógico esquerdo de um joystick. </div><div class="ttdef"><b>Definition:</b> core.h:40</div></div>
+<div class="ttc" id="classCore_html_a6e002cd17fe42a38d8d33e3d6ef845d9"><div class="ttname"><a href="classCore.html#a6e002cd17fe42a38d8d33e3d6ef845d9">Core::thread_com</a></div><div class="ttdeci">thread * thread_com</div><div class="ttdoc">Thread para enviar os dados para o VSS-Simualtor ou robôs reais. </div><div class="ttdef"><b>Definition:</b> core.h:35</div></div>
+<div class="ttc" id="classCore_html"><div class="ttname"><a href="classCore.html">Core</a></div><div class="ttdoc">Essa classe é responsável por tratar de obter os dados de um jostick e enviar os comandos para o VSS-...</div><div class="ttdef"><b>Definition:</b> core.h:23</div></div>
+<div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
+<div class="ttc" id="classCore_html_a69d2a2f913b4a1832516e5752c655c97"><div class="ttname"><a href="classCore.html#a69d2a2f913b4a1832516e5752c655c97">Core::interface</a></div><div class="ttdeci">Interface interface</div><div class="ttdoc">Interface de comunicação com o VSS-Simulator. </div><div class="ttdef"><b>Definition:</b> core.h:28</div></div>
+<div class="ttc" id="structJoyAxis_html"><div class="ttname"><a href="structJoyAxis.html">JoyAxis</a></div><div class="ttdoc">Essa struct passiva, contém os valores de um analógico. </div><div class="ttdef"><b>Definition:</b> commons.h:27</div></div>
+<div class="ttc" id="classReaderControlJoy_html"><div class="ttname"><a href="classReaderControlJoy.html">ReaderControlJoy</a></div><div class="ttdoc">Essa classe é responsável poder interpretar os valores obtidos de qualquer joystick usb...</div><div class="ttdef"><b>Definition:</b> reader_control_joy.h:21</div></div>
+<div class="ttc" id="classCore_html_a6f97de806c6e3e70a28d17e9ff91e52a"><div class="ttname"><a href="classCore.html#a6f97de806c6e3e70a28d17e9ff91e52a">Core::type</a></div><div class="ttdeci">int type</div><div class="ttdoc">Tipo define o destino da mensagem: SIMULATOR OR REAL. </div><div class="ttdef"><b>Definition:</b> core.h:38</div></div>
+<div class="ttc" id="classCore_html_a8b79534f9c58257910e3fce2ad36c7e2"><div class="ttname"><a href="classCore.html#a8b79534f9c58257910e3fce2ad36c7e2">Core::ip</a></div><div class="ttdeci">string ip</div><div class="ttdoc">Ip do VSS-Simulator. </div><div class="ttdef"><b>Definition:</b> core.h:30</div></div>
+<div class="ttc" id="classInterface_html"><div class="ttname"><a href="classInterface.html">Interface</a></div><div class="ttdoc">Essa classe define as interfaces utilizadas em todos os projetos do VSS-SDK, em outras palavras...</div><div class="ttdef"><b>Definition:</b> interface.h:26</div></div>
+<div class="ttc" id="classCore_html_a21f63c0f0f6fd2b4b45b2217d9069116"><div class="ttname"><a href="classCore.html#a21f63c0f0f6fd2b4b45b2217d9069116">Core::rc_joy</a></div><div class="ttdeci">ReaderControlJoy rc_joy</div><div class="ttdoc">Interpretador de comandos de um joytick USB. </div><div class="ttdef"><b>Definition:</b> core.h:26</div></div>
+<div class="ttc" id="classCore_html_ac4b1994dc99b1b5ccc6573f6beb0e27f"><div class="ttname"><a href="classCore.html#ac4b1994dc99b1b5ccc6573f6beb0e27f">Core::thread_joy</a></div><div class="ttdeci">thread * thread_joy</div><div class="ttdoc">Thread para obter os dados do joystick. </div><div class="ttdef"><b>Definition:</b> core.h:33</div></div>
+<div class="ttc" id="classvss__command_1_1Global__Commands_html"><div class="ttname"><a href="classvss__command_1_1Global__Commands.html">vss_command::Global_Commands</a></div><div class="ttdef"><b>Definition:</b> command.pb.h:160</div></div>
+<div class="ttc" id="classCore_html_a4aae8e4296ffa4cc22cb28a397f36653"><div class="ttname"><a href="classCore.html#a4aae8e4296ffa4cc22cb28a397f36653">Core::global_commands</a></div><div class="ttdeci">vss_command::Global_Commands global_commands</div><div class="ttdoc">Comandos para serem enviados ao VSS-Simulator. </div><div class="ttdef"><b>Definition:</b> core.h:42</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>

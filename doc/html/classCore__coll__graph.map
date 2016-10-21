@@ -1,0 +1,9 @@
+<map id="Core" name="Core">
+<area shape="rect" id="node2" href="$classReaderControlJoy.html" title="Essa classe é responsável poder interpretar os valores obtidos de qualquer joystick usb..." alt="" coords="72,185,199,212"/>
+<area shape="rect" id="node3" href="$classJoystick.html" title="Represents a joystick device. Allows data to be sampled from it. " alt="" coords="5,89,76,115"/>
+<area shape="rect" id="node4" href="$structJoyAxis.html" title="Essa struct passiva, contém os valores de um analógico. " alt="" coords="101,89,170,115"/>
+<area shape="rect" id="node5" href="$classInterface.html" title="Essa classe define as interfaces utilizadas em todos os projetos do VSS&#45;SDK, em outras palavras..." alt="" coords="347,185,420,212"/>
+<area shape="rect" id="node6" href="$classvss__debug_1_1Global__Debug.html" title="vss_debug::Global_Debug" alt="" coords="195,89,369,115"/>
+<area shape="rect" id="node8" href="$classvss__state_1_1Global__State.html" title="vss_state::Global_State" alt="" coords="394,89,557,115"/>
+<area shape="rect" id="node9" href="$classvss__command_1_1Global__Commands.html" title="vss_command::Global\l_Commands" alt="" coords="581,81,733,123"/>
+</map>

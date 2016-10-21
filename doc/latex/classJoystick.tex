@@ -1,0 +1,51 @@
+\hypertarget{classJoystick}{}\section{Referência da Classe Joystick}
+\label{classJoystick}\index{Joystick@{Joystick}}
+
+
+Represents a joystick device. Allows data to be sampled from it.  
+
+
+
+
+{\ttfamily \#include $<$joystick.\+hh$>$}
+
+\subsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classJoystick_a158b1f77b78717efbf1b8fac43b1fcef}{Joystick} ()\hypertarget{classJoystick_a158b1f77b78717efbf1b8fac43b1fcef}{}\label{classJoystick_a158b1f77b78717efbf1b8fac43b1fcef}
+
+\begin{DoxyCompactList}\small\item\em Initialises an instance for the first joystick\+: /dev/input/js0. \end{DoxyCompactList}\item 
+\hyperlink{classJoystick_a0bd88249a8e103fe326d5345019a3de2}{Joystick} (int joystick\+Number)\hypertarget{classJoystick_a0bd88249a8e103fe326d5345019a3de2}{}\label{classJoystick_a0bd88249a8e103fe326d5345019a3de2}
+
+\begin{DoxyCompactList}\small\item\em Initialises an instance for the joystick with the specified, zero-\/indexed number. \end{DoxyCompactList}\item 
+\hyperlink{classJoystick_ac0cd7f0cb955fd62850589e1f0660285}{Joystick} (std\+::string device\+Path)\hypertarget{classJoystick_ac0cd7f0cb955fd62850589e1f0660285}{}\label{classJoystick_ac0cd7f0cb955fd62850589e1f0660285}
+
+\begin{DoxyCompactList}\small\item\em Initialises an instance for the joystick device specified. \end{DoxyCompactList}\item 
+bool \hyperlink{classJoystick_a466b80d028a829cb4aa24ae60602c646}{is\+Found} ()\hypertarget{classJoystick_a466b80d028a829cb4aa24ae60602c646}{}\label{classJoystick_a466b80d028a829cb4aa24ae60602c646}
+
+\begin{DoxyCompactList}\small\item\em Returns true if the joystick was found and may be used, otherwise false. \end{DoxyCompactList}\item 
+bool \hyperlink{classJoystick_a13d48d8d9a32a788394f69472b6b3d9d}{sample} (\hyperlink{classJoystickEvent}{Joystick\+Event} $\ast$event)
+\begin{DoxyCompactList}\small\item\em Attempts to populate the provided \hyperlink{classJoystickEvent}{Joystick\+Event} instance with data from the joystick. Returns true if data is available, otherwise false. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrição Detalhada}
+Represents a joystick device. Allows data to be sampled from it. 
+
+\subsection{Métodos}
+\index{Joystick@{Joystick}!sample@{sample}}
+\index{sample@{sample}!Joystick@{Joystick}}
+\subsubsection[{\texorpdfstring{sample(\+Joystick\+Event $\ast$event)}{sample(JoystickEvent *event)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Joystick\+::sample (
+\begin{DoxyParamCaption}
+\item[{{\bf Joystick\+Event} $\ast$}]{event}
+\end{DoxyParamCaption}
+)}\hypertarget{classJoystick_a13d48d8d9a32a788394f69472b6b3d9d}{}\label{classJoystick_a13d48d8d9a32a788394f69472b6b3d9d}
+
+
+Attempts to populate the provided \hyperlink{classJoystickEvent}{Joystick\+Event} instance with data from the joystick. Returns true if data is available, otherwise false. 
+
+N\+O\+TE if this condition is not met, we\textquotesingle{}re probably out of sync and this \hyperlink{classJoystick}{Joystick} instance is likely unusable 
+
+A documentação para esta classe foi gerada a partir dos seguintes arquivos\+:\begin{DoxyCompactItemize}
+\item 
+/home/johnathan/\+Repositories/\+S\+I\+R\+Lab/\+Projects/\+V\+S\+S-\/\+Joystick/src/joystick/joystick.\+hh\item 
+/home/johnathan/\+Repositories/\+S\+I\+R\+Lab/\+Projects/\+V\+S\+S-\/\+Joystick/src/joystick/joystick.\+cc\end{DoxyCompactItemize}
