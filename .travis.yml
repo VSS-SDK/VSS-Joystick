@@ -1,29 +1,10 @@
 # Ubuntu 14.04 Trusty support
-sudo: true
-
 language: cpp
 
 compiler:
+  - clang
   - gcc
-
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - build-essential
-      - git
-      - cmake
-      - gcc-4.8
-      - g++-4.8
-      - protobuf-compiler
-      - libprotobuf-dev
-      - libopencv-dev
-      - libzmq3
-      - libzmq3-dev
-      - libboost-all-dev
       
 script:
-
   - make proto
   - make
