@@ -1,7 +1,7 @@
 VSS-Joystick
 ============
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)][gpl3]
-<!--[![Build Status](https://travis-ci.org/SIRLab/VSS-Joystick.svg?branch=master)][travis]-->
+[![Build Status](https://travis-ci.org/SIRLab/VSS-Joystick.svg?branch=master)][travis]
 [![Link: Youtube](https://img.shields.io/badge/Link-Youtube-red.svg)][youtube]
 
 Installation
