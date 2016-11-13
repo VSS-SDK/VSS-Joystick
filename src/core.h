@@ -11,7 +11,7 @@
 
 #include "iostream"
 
-#include "VSS-Interface/interface.h"
+#include "VSS-Interface/cpp/interface.h"
 #include "reader_control_joy.h"
 
 #include "thread"
