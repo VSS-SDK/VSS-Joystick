@@ -37,7 +37,7 @@ This code is licensed under the [GNU GENERAL PUBLIC LICENSE Version 3][gpl3], of
 You are allowed and encouraged to use this software on the IEEE Very Small Size Soccer competitions.  If you do, please let us know.
 
 [gpl3]: http://www.gnu.org/licenses/gpl-3.0/
-[travis]: https://travis-ci.org/SIRLab/VSS-SampleStrategy
+[travis]: https://travis-ci.org/SIRLab/VSS-Joystick
 [install]: https://github.com/SIRLab/VSS-Joystick/blob/master/INSTALL.md
 [vss-sdk]: http://sirlab.github.io/VSS-SDK
 

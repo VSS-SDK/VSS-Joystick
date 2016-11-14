@@ -30,12 +30,10 @@ addons:
       - cmake
       - gcc-4.8
       - g++-4.8
-      - freeglut3
-      - freeglut3-dev
-      - libbullet-dev
       - libzmq3
       - libzmq3-dev
       - libboost-all-dev
+      
 script:
   - make proto
   - make
