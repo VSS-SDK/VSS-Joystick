@@ -17,7 +17,7 @@
 #include "commons.h"
 #include "joystick/joystick.hh"
 
-//! Essa classe é responsável poder interpretar os valores obtidos de qualquer joystick usb 
+//! Essa classe é responsável por interpretar os valores obtidos de qualquer joystick usb 
 class ReaderControlJoy{
 protected:
     //! Classe de acesso a um jostick
@@ -28,19 +28,18 @@ protected:
     int delay;
 
     //! Threads de leitura do eixo X e Y do analógico esquerdo
-    thread *left_thread_x, *left_thread_y;
+    thread *analog_left_thread;
 
 public:
-    //! Construcot DEFAULT
+    //! Construtor DEFAULT
     ReaderControlJoy();
 
     //! Método responsável por inicializar o interpretador 
     void init();
 
-    //! Método reponsável por efetuar as leituras do eixo X do analógico esquerdo
-    void thread_left_x();
-    //! Método responsável por efetur as leituras do eixo Y do analógico direito
-    void thread_left_y();
+    //! Método reponsável por efetuar as leituras do analógico esquerdo
+    void func_analog_left();
+    
     //! Método responsável por retornar as leituras do analógico esquerdo
     JoyAxis get_axis_left();
     

@@ -9,7 +9,8 @@
 
 #include "reader_control_joy.h"
 
-ReaderControlJoy::ReaderControlJoy(){
+// verify your joystick number
+ReaderControlJoy::ReaderControlJoy() : joystick(0) {
     delay = 500;
 };
 
@@ -17,17 +18,16 @@ void ReaderControlJoy::init(){
     //! Caso um joystick esteja conectado.
     if(joystick.isFound()){
         // É criado duas threads para leitura dos valores do joystick
-        left_thread_x = new thread(bind(&ReaderControlJoy::thread_left_x, this));
-        left_thread_y = new thread(bind(&ReaderControlJoy::thread_left_y, this));
+        analog_left_thread = new thread(bind(&ReaderControlJoy::func_analog_left, this));
 
-        left_thread_x->join();
-        left_thread_y->join();
-    }
+        analog_left_thread->join();
+    } 
 }
 
-void ReaderControlJoy::thread_left_x(){
+void ReaderControlJoy::func_analog_left(){
     //! Loop contendo a leitura do eixo X do analógico esquerdo
     while(true){
+
         JoystickEvent event;
         joystick.sample(&event);
         //! Caso o evento enviado pelo joystick seja uma nova leitura do eixo X do analógico esquerdo
@@ -35,30 +35,19 @@ void ReaderControlJoy::thread_left_x(){
             //! Lê o valor obtido
             left.axis[X] = event.value;
             
-            //! Normaliza o valor para algo entre 0 e 100
-            left.axis[X] = left.axis[X]/MAX_VAL * 100.0;
-
-            //! ATENCÃO: A Leitura sofre com perda de informação, por isso as vezes o valor trava. TODO: Resolver.
+            //! Normaliza o valor para algo entre 0 e 200
+            left.axis[X] = left.axis[X]/MAX_VAL * 200.0;
         }
-        usleep(delay);
-    }
-}
 
-void ReaderControlJoy::thread_left_y(){
-    //! Loop contendo a leitura do eixo X do analógico esquerdo
-    while(true){
-        JoystickEvent event;
-        joystick.sample(&event);
-        //! Caso o evento enviado pelo joystick seja uma nova leitura do eixo Y do analógico esquerdo
+        //! Leitura de evento caso seja do eixo Y no analogico esquerdo
         if (event.isAxis() && event.number == 1){
-            //! Lê o valor obtido
+             //! Lê o valor obtido
             left.axis[Y] = event.value;
             
-            //! Normaliza o valor para algo entre 0 e 100
-            left.axis[Y] = left.axis[Y]/MAX_VAL * -100.0;
-
-            //! ATENCÃO: A Leitura sofre com perda de informação, por isso as vezes o valor trava. TODO: Resolver.
+            //! Normaliza o valor para algo entre 0 e 200
+            left.axis[Y] = left.axis[Y]/MAX_VAL * -200.0;
         }
+        
         usleep(delay);
     }
 }
