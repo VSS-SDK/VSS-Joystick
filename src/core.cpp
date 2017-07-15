@@ -31,7 +31,7 @@ void Core::joy_thread(){
 }
 
 void Core::com_thread(){
-    //Transmission transmission;
+
     JoyAxis left;
 
      //! Caso o destino seja o VSS-Simulator o trecho de código já está bem definido
@@ -77,7 +77,7 @@ void Core::com_thread(){
             left = rc_joy.get_axis_left();
             // left.show();
             //! cout << left[X] << " " << left[Y] << end;
-            
+
             //! your own transmission module here
             
             usleep(33000);
