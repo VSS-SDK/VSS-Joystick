@@ -9,7 +9,8 @@
 
 #include "reader_control_joy.h"
 
-ReaderControlJoy::ReaderControlJoy(){
+// verify your joystick number
+ReaderControlJoy::ReaderControlJoy() : joystick(0) {
     delay = 500;
 };
 
