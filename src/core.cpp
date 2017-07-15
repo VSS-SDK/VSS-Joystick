@@ -76,7 +76,8 @@ void Core::com_thread(){
         while(true){
             left = rc_joy.get_axis_left();
             // left.show();
-
+            //! cout << left[X] << " " << left[Y] << end;
+            
             //! your own transmission module here
             
             usleep(33000);
