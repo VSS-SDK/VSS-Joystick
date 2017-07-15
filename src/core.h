@@ -11,7 +11,7 @@
 
 #include "iostream"
 
-#include "VSS-Interface/cpp/interface.h"
+//#include "VSS-Interface/cpp/interface.h"
 #include "reader_control_joy.h"
 
 #include "thread"
@@ -25,7 +25,7 @@ protected:
     //! Interpretador de comandos de um joytick USB
     ReaderControlJoy rc_joy;
     //! Interface de comunicação com o VSS-Simulator
-    Interface interface;
+//    Interface interface;
     //! Ip do VSS-Simulator
     string ip;
 
@@ -39,7 +39,7 @@ protected:
     //! Valores obtidos na leitura do analógico esquerdo de um joystick
     JoyAxis left;
     //! Comandos para serem enviados ao VSS-Simulator
-    vss_command::Global_Commands global_commands;
+//    vss_command::Global_Commands global_commands;
 
 public:
     //! Construtor DEFAULT

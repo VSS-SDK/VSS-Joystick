@@ -31,7 +31,10 @@ void Core::joy_thread(){
 }
 
 void Core::com_thread(){
-    //! Caso o destino seja o VSS-Simulator o trecho de código já está bem definido
+    //Transmission transmission;
+    JoyAxis left;
+
+     //! Caso o destino seja o VSS-Simulator o trecho de código já está bem definido
     if(type == SIMULATOR){
         //! A interface de comunicação com o VSS-Simulator é criada 
         interface.createSendCommandsTeam1(&global_commands, ip);
@@ -69,10 +72,15 @@ void Core::com_thread(){
             usleep(1000);
         }
     }else{
-        //! Caso o destino seja robôs reais
-        cerr << "You must implement your own communication..." << endl;
-        //! O necessário adicionar o módulo de comunicação referente a plataforma utilizada
-        //! Deve-se utilizar a leitura do analógico da mesma forma apresentada quando o destino é o VSS-Simulator 
+
+        while(true){
+            left = rc_joy.get_axis_left();
+            // left.show();
+
+            //! your own transmission module here
+            
+            usleep(33000);
+        }
     }
 }
 
