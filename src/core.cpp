@@ -7,11 +7,12 @@
  */
 
 #include "core.h"
+#include "functional"
 
 Core::Core(){
     //! Simulador é definido como destino DEFAULT
     type = SIMULATOR;
-} 
+}
 
 void Core::init(int type, string ip){
     this->type = type;
@@ -36,9 +37,9 @@ void Core::com_thread(){
 
      //! Caso o destino seja o VSS-Simulator o trecho de código já está bem definido
     if(type == SIMULATOR){
-        //! A interface de comunicação com o VSS-Simulator é criada 
+        //! A interface de comunicação com o VSS-Simulator é criada
         interface.createSendCommandsTeam1(&global_commands, ip);
-        
+
         //! Loop infinito que envia os dados
         while(true){
             //! O pacote é limpo
@@ -58,7 +59,7 @@ void Core::com_thread(){
             robot->set_left_vel( (left.axis[Y] + left.axis[X]*0.2)*0.5 );
             //! É definido a velocidade da roda direita do robô com base dos valores do analógico
             robot->set_right_vel( (left.axis[Y] - left.axis[X]*0.2)*0.5 );
-            
+
             // É adicionado outros robôs ao pacote
             for(int i = 1 ; i < 3 ; i++){
                 vss_command::Robot_Command *robot = global_commands.add_robot_commands();
@@ -79,9 +80,8 @@ void Core::com_thread(){
             //! cout << left[X] << " " << left[Y] << end;
 
             //! your own transmission module here
-            
+
             usleep(33000);
         }
     }
 }
-

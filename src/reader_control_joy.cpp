@@ -8,6 +8,7 @@
 
 
 #include "reader_control_joy.h"
+#include "functional"
 
 // verify your joystick number
 ReaderControlJoy::ReaderControlJoy() {
@@ -22,7 +23,7 @@ void ReaderControlJoy::init(){
         analog_left_thread = new thread(bind(&ReaderControlJoy::func_analog_left, this));
 
         analog_left_thread->join();
-    } 
+    }
 }
 
 void ReaderControlJoy::func_analog_left(){
@@ -35,7 +36,7 @@ void ReaderControlJoy::func_analog_left(){
         if (event.isAxis() && event.number == 0){
             //! Lê o valor obtido
             left.axis[X] = event.value;
-            
+
             //! Normaliza o valor para algo entre 0 e 200
             left.axis[X] = left.axis[X]/MAX_VAL * 200.0;
         }
@@ -44,11 +45,11 @@ void ReaderControlJoy::func_analog_left(){
         if (event.isAxis() && event.number == 1){
              //! Lê o valor obtido
             left.axis[Y] = event.value;
-            
+
             //! Normaliza o valor para algo entre 0 e 200
             left.axis[Y] = left.axis[Y]/MAX_VAL * -200.0;
         }
-        
+
         usleep(delay);
     }
 }

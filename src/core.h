@@ -11,7 +11,7 @@
 
 #include "iostream"
 
-#include "VSS-Interface/cpp/interface.h"
+#include "../VSS-Interface/interface.h"
 #include "reader_control_joy.h"
 
 #include "thread"
@@ -29,7 +29,7 @@ protected:
     //! Ip do VSS-Simulator
     string ip;
 
-    //! Thread para obter os dados do joystick 
+    //! Thread para obter os dados do joystick
     thread *thread_joy;
     //! Thread para enviar os dados para o VSS-Simualtor ou robôs reais
     thread *thread_com;
