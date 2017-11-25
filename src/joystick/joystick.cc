@@ -2,12 +2,12 @@
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
+//
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>
 
@@ -23,44 +23,44 @@
 
 Joystick::Joystick()
 {
-  openPath("/dev/input/js0");
+	openPath( "/dev/input/js0" );
 }
 
-Joystick::Joystick(int joystickNumber)
+Joystick::Joystick( int joystickNumber )
 {
-  std::stringstream sstm;
-  sstm << "/dev/input/js" << joystickNumber;
-  openPath(sstm.str());
+	std::stringstream sstm;
+	sstm << "/dev/input/js" << joystickNumber;
+	openPath( sstm.str());
 }
 
-Joystick::Joystick(std::string devicePath)
+Joystick::Joystick( std::string devicePath )
 {
-  openPath(devicePath);
+	openPath( devicePath );
 }
 
-void Joystick::openPath(std::string devicePath)
+void Joystick::openPath( std::string devicePath )
 {
-  _fd = open(devicePath.c_str(), O_RDONLY | O_NONBLOCK);
+	_fd = open( devicePath.c_str(), O_RDONLY | O_NONBLOCK );
 }
 
-bool Joystick::sample(JoystickEvent* event)
+bool Joystick::sample( JoystickEvent* event )
 {
-  int bytes = read(_fd, event, sizeof(*event)); 
+	int bytes = read( _fd, event, sizeof(*event));
 
-  if (bytes == -1)
-    return false;
+	if (bytes == -1)
+		return false;
 
-  //! NOTE if this condition is not met, we're probably out of sync and this
-  //! Joystick instance is likely unusable
-  return bytes == sizeof(*event);
+	//! NOTE if this condition is not met, we're probably out of sync and this
+	//! Joystick instance is likely unusable
+	return bytes == sizeof(*event);
 }
 
 bool Joystick::isFound()
 {
-  return _fd >= 0;
+	return _fd >= 0;
 }
 
 Joystick::~Joystick()
 {
-  close(_fd);
+	close( _fd );
 }

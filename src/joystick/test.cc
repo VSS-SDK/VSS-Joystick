@@ -2,32 +2,32 @@
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
+//
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 /*#include "joystick.hh"
-#include <unistd.h>
+   #include <unistd.h>
 
-int main(int argc, char** argv)
-{
-  // Create an instance of Joystick
-  Joystick joystick("/dev/input/js0");
+   int main(int argc, char** argv)
+   {
+   // Create an instance of Joystick
+   Joystick joystick("/dev/input/js0");
 
-  // Ensure that it was found and that we can use it
-  if (!joystick.isFound())
-  {
+   // Ensure that it was found and that we can use it
+   if (!joystick.isFound())
+   {
     printf("open failed.\n");
     exit(1);
-  }
+   }
 
-  while (true)
-  {
+   while (true)
+   {
     // Restrict rate
     usleep(1000);
 
@@ -46,5 +46,5 @@ int main(int argc, char** argv)
         printf("Axis %u is at position %d\n", event.number, event.value);
       }
     }
-  }
-}*/
+   }
+   }*/

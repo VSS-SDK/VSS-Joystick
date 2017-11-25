@@ -20,37 +20,39 @@
 using namespace std;
 
 //! Essa classe é responsável por tratar de obter os dados de um jostick e enviar os comandos para o VSS-Simulator e robôs reais
-class Core{
+class Core {
 protected:
-    //! Interpretador de comandos de um joytick USB
-    ReaderControlJoy rc_joy;
-    //! Interface de comunicação com o VSS-Simulator
-    Interface interface;
-    //! Ip do VSS-Simulator
-    string ip;
 
-    //! Thread para obter os dados do joystick
-    thread *thread_joy;
-    //! Thread para enviar os dados para o VSS-Simualtor ou robôs reais
-    thread *thread_com;
+	//! Interpretador de comandos de um joytick USB
+	ReaderControlJoy rc_joy;
+	//! Interface de comunicação com o VSS-Simulator
+	Interface interface;
+	//! Ip do VSS-Simulator
+	string ip;
 
-    //! Tipo define o destino da mensagem: SIMULATOR OR REAL
-    int type;
-    //! Valores obtidos na leitura do analógico esquerdo de um joystick
-    JoyAxis left;
-    //! Comandos para serem enviados ao VSS-Simulator
-    vss_command::Global_Commands global_commands;
+	//! Thread para obter os dados do joystick
+	thread *thread_joy;
+	//! Thread para enviar os dados para o VSS-Simualtor ou robôs reais
+	thread *thread_com;
+
+	//! Tipo define o destino da mensagem: SIMULATOR OR REAL
+	int type;
+	//! Valores obtidos na leitura do analógico esquerdo de um joystick
+	JoyAxis left;
+	//! Comandos para serem enviados ao VSS-Simulator
+	vss_command::Global_Commands global_commands;
 
 public:
-    //! Construtor DEFAULT
-    Core();
 
-    //! Método responsável pela inicialização da comunicação e leitura do joystick
-    void init(int type, string ip);
-    //! Thread de leitura do joystick
-    void joy_thread();
-    //! Thread de comunicação com o VSS-Simulator ou Robôs reais
-    void com_thread();
+	//! Construtor DEFAULT
+	Core();
+
+	//! Método responsável pela inicialização da comunicação e leitura do joystick
+	void init( int type, string ip );
+	//! Thread de leitura do joystick
+	void joy_thread();
+	//! Thread de comunicação com o VSS-Simulator ou Robôs reais
+	void com_thread();
 };
 
 #endif // _CORE_H_

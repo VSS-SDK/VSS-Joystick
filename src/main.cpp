@@ -13,47 +13,47 @@
 using namespace std;
 
 //! Leitura dos parâmetros de entrada
-bool argParse(int argc, char** argv, bool *real, string *ip);
+bool argParse( int argc, char** argv, bool *real, string *ip );
 
-int main(int argc, char** argv){
-    string ip;
-    bool real;
-    if( argParse(argc, argv, &real, &ip) ){
-        Core core;
+int main( int argc, char** argv ){
+	string ip;
+	bool real;
+	if( argParse( argc, argv, &real, &ip ) ) {
+		Core core;
 
-        if(real)
-            core.init(REAL, ip);
-        else
-            core.init(SIMULATOR, ip);
-    }
+		if(real)
+			core.init( REAL, ip );
+		else
+			core.init( SIMULATOR, ip );
+	}
 }
 
-bool argParse(int argc, char** argv, bool *real, string *ip){
-    namespace bpo = boost::program_options;
+bool argParse( int argc, char** argv, bool *real, string *ip ){
+	namespace bpo = boost::program_options;
 
-    //! Define as opções de parâmetros
-    bpo::options_description desc("Allowed options");
-    desc.add_options()
-        ("help,h", "(Optional) produce help message")
-        ("ip_sender,i", bpo::value<std::string>()->default_value("localhost"), "(Optional) specify the ip of destiny.")
-        ("real,r", "(Optional) Send command to real robots.");
-    bpo::variables_map vm;
-    bpo::store(bpo::parse_command_line(argc, argv, desc), vm);
-    bpo::notify(vm);
+	//! Define as opções de parâmetros
+	bpo::options_description desc( "Allowed options" );
+	desc.add_options()
+	        ( "help,h", "(Optional) produce help message" )
+	        ( "ip_sender,i", bpo::value<std::string>()->default_value( "localhost" ), "(Optional) specify the ip of destiny." )
+	        ( "real,r", "(Optional) Send command to real robots." );
+	bpo::variables_map vm;
+	bpo::store( bpo::parse_command_line( argc, argv, desc ), vm );
+	bpo::notify( vm );
 
-    //! Imprime a lista de parâmetros e fecha o programa
-    if (vm.count("help")){
-        std::cout << desc << std::endl;
-        return false;
-    }
+	//! Imprime a lista de parâmetros e fecha o programa
+	if (vm.count( "help" )) {
+		std::cout << desc << std::endl;
+		return false;
+	}
 
-    //! Define o destino dos comandos. VSS-Simulator ou robôs reais
-    if (vm.count("real")){
-        *real = true;
-    }
+	//! Define o destino dos comandos. VSS-Simulator ou robôs reais
+	if (vm.count( "real" )) {
+		*real = true;
+	}
 
-    //! Define o IP de destino do VSS-Simulator
-    *ip = vm["ip_sender"].as<string>();
+	//! Define o IP de destino do VSS-Simulator
+	*ip = vm["ip_sender"].as<string>();
 
-    return true;
+	return true;
 }
