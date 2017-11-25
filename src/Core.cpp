@@ -6,8 +6,7 @@
  * file, You can obtain one at http://www.gnu.org/licenses/gpl-3.0/.
  */
 
-#include "core.h"
-#include "functional"
+#include "Core.h"
 
 Core::Core(){
 	//! Simulador é definido como destino DEFAULT
@@ -20,19 +19,18 @@ void Core::init( int type, string ip ){
 	this->ip = "tcp://" + ip + ":5556";
 	//cout << this->ip << endl;
 
-	thread_joy = new thread( bind( &Core::joy_thread, this ));
-	thread_com = new thread( bind( &Core::com_thread, this ));
+	joystickThread = new thread( bind( &Core::joystickThreadWrapper, this ));
+	communicationThread = new thread( bind( &Core::communicationThreadWrapper, this ));
 
-	thread_joy->join();
-	thread_com->join();
+	joystickThread->join();
+	communicationThread->join();
 }
 
-void Core::joy_thread(){
-	rc_joy.init();
+void Core::joystickThreadWrapper(){
+	joystickReader.init();
 }
 
-void Core::com_thread(){
-
+void Core::communicationThreadWrapper(){
 	JoyAxis left;
 
 	//! Caso o destino seja o VSS-Simulator o trecho de código já está bem definido
@@ -48,8 +46,7 @@ void Core::com_thread(){
 			global_commands.set_is_team_yellow( true );
 
 			//! É pego os valores do joystick
-			left = rc_joy.get_axis_left();
-			//rc_joy.show();
+			left = joystickReader.getAxisLeft();
 
 			//! É adicionado um comando de robô ao pacote
 			vss_command::Robot_Command *robot = global_commands.add_robot_commands();
@@ -75,7 +72,7 @@ void Core::com_thread(){
 	}else{
 
 		while(true) {
-			left = rc_joy.get_axis_left();
+			left = joystickReader.getAxisLeft();
 			// left.show();
 			//! cout << left[X] << " " << left[Y] << end;
 

@@ -6,9 +6,9 @@
  * file, You can obtain one at http://www.gnu.org/licenses/gpl-3.0/.
  */
 
-#include "iostream"
-#include "boost.h"
-#include "core.h"
+#include <iostream>
+#include "Boost.h"
+#include "Core.h"
 
 using namespace std;
 
@@ -18,6 +18,7 @@ bool argParse( int argc, char** argv, bool *real, string *ip );
 int main( int argc, char** argv ){
 	string ip;
 	bool real;
+
 	if( argParse( argc, argv, &real, &ip ) ) {
 		Core core;
 

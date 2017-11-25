@@ -9,13 +9,12 @@
 #ifndef _CORE_H_
 #define _CORE_H_
 
-#include "iostream"
-
+#include <iostream>
+#include <thread>
+#include <unistd.h>
+#include <functional>
 #include "../VSS-Interface/interface.h"
-#include "reader_control_joy.h"
-
-#include "thread"
-#include "unistd.h"
+#include "JoystickReader.h"
 
 using namespace std;
 
@@ -24,16 +23,16 @@ class Core {
 protected:
 
 	//! Interpretador de comandos de um joytick USB
-	ReaderControlJoy rc_joy;
+	JoystickReader joystickReader;
 	//! Interface de comunicação com o VSS-Simulator
 	Interface interface;
 	//! Ip do VSS-Simulator
 	string ip;
 
 	//! Thread para obter os dados do joystick
-	thread *thread_joy;
+	thread *joystickThread;
 	//! Thread para enviar os dados para o VSS-Simualtor ou robôs reais
-	thread *thread_com;
+	thread *communicationThread;
 
 	//! Tipo define o destino da mensagem: SIMULATOR OR REAL
 	int type;
@@ -46,13 +45,12 @@ public:
 
 	//! Construtor DEFAULT
 	Core();
-
 	//! Método responsável pela inicialização da comunicação e leitura do joystick
 	void init( int type, string ip );
 	//! Thread de leitura do joystick
-	void joy_thread();
+	void joystickThreadWrapper();
 	//! Thread de comunicação com o VSS-Simulator ou Robôs reais
-	void com_thread();
+	void communicationThreadWrapper();
 };
 
 #endif // _CORE_H_
