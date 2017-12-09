@@ -23,7 +23,6 @@ void JoystickReader::init(){
 
 			JoystickEvent event;
 			if(joystick.sample( &event )) {
-
 				//! Caso o evento enviado pelo joystick seja uma nova leitura do eixo X do analógico esquerdo
 				if (event.isAxis() && event.number == 0) {
 					left.axis[X] = event.value;
@@ -39,6 +38,8 @@ void JoystickReader::init(){
 					//! Normaliza o valor para algo entre 0 e 200
 					left.axis[Y] = left.axis[Y] / MAX_VAL * -200.0;
 				}
+
+				left.show();
 			}
 		}
 	}

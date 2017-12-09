@@ -42,7 +42,6 @@ void Core::communicationThreadWrapper(){
 		while(true) {
 			//! O pacote é limpo
 			global_commands = vss_command::Global_Commands();
-			global_commands.set_situation( 0 );
 			global_commands.set_is_team_yellow( true );
 
 			//! É pego os valores do joystick

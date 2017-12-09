@@ -13,7 +13,7 @@
 #include <thread>
 #include <unistd.h>
 #include <functional>
-#include "../VSS-Interface/interface.h"
+#include "interface.h"
 #include "JoystickReader.h"
 
 using namespace std;
