@@ -23,9 +23,9 @@ int main( int argc, char** argv ){
 		Core core;
 
 		if(real)
-			core.init( REAL, ip );
+			core.init( REAL );
 		else
-			core.init( SIMULATOR, ip );
+			core.init( SIMULATOR );
 	}
 }
 

@@ -12,17 +12,19 @@ include_directories(${PROTOBUF_INCLUDE_DIR} ${Boost_INCLUDE_DIR})
 
 file(GLOB_RECURSE SRCS_CPP src/*.cpp)
 file(GLOB_RECURSE SRCS_CC src/*.cc)
+file(GLOB_RECURSE H src/*.h)
+file(GLOB_RECURSE HH src/*.hh)
 
-set (VSS_INTERFACE libvss-interface.so)
+set (VSS_CORE libvss-core.so)
 link_directories(usr/lib)
 include_directories(usr/local/include)
 
-ADD_EXECUTABLE(vss-joystick ${SRCS_CPP} ${SRCS_CC})
+ADD_EXECUTABLE(vss-joystick ${SRCS_CPP} ${SRCS_CC} ${H} ${HH})
 
 target_include_directories(vss-joystick PUBLIC ${ZeroMQ_INCLUDE_DIR})
 target_link_libraries(vss-joystick PUBLIC ${ZeroMQ_LIBRARY})
 
-TARGET_LINK_LIBRARIES(vss-joystick ${VSS_INTERFACE} ${PROTOBUF_LIBRARY})
+TARGET_LINK_LIBRARIES(vss-joystick ${VSS_CORE} ${PROTOBUF_LIBRARY})
 TARGET_LINK_LIBRARIES(vss-joystick LINK_PUBLIC ${Boost_LIBRARIES})
 
 INSTALL(TARGETS vss-joystick DESTINATION bin)

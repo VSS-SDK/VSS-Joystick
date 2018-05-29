@@ -13,7 +13,7 @@
 #include <thread>
 #include <unistd.h>
 #include <functional>
-#include "interface.h"
+#include "Interfaces/ICommandSender.h"
 #include "JoystickReader.h"
 
 using namespace std;
@@ -25,9 +25,7 @@ protected:
 	//! Interpretador de comandos de um joytick USB
 	JoystickReader joystickReader;
 	//! Interface de comunicação com o VSS-Simulator
-	Interface interface;
-	//! Ip do VSS-Simulator
-	string ip;
+	vss::ICommandSender *commandSender;
 
 	//! Thread para obter os dados do joystick
 	thread *joystickThread;
@@ -38,15 +36,12 @@ protected:
 	int type;
 	//! Valores obtidos na leitura do analógico esquerdo de um joystick
 	JoyAxis left;
-	//! Comandos para serem enviados ao VSS-Simulator
-	vss_command::Global_Commands global_commands;
-
 public:
 
 	//! Construtor DEFAULT
 	Core();
 	//! Método responsável pela inicialização da comunicação e leitura do joystick
-	void init( int type, string ip );
+	void init( int type );
 	//! Thread de leitura do joystick
 	void joystickThreadWrapper();
 	//! Thread de comunicação com o VSS-Simulator ou Robôs reais
