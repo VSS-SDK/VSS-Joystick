@@ -32,7 +32,9 @@
 *.exe
 *.out
 *.app
-VSS-Joystick
-VSS-Joystick-Debug
-doc/html/*
-doc/latex/*
+build/
+build/*
+cmake-build-debug/
+cmake-build-debug/*
+.idea/
+.idea/*
