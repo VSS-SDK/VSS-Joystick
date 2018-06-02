@@ -13,6 +13,7 @@ INSTALL_CORE () {
 
     git clone https://github.com/SIRLab/VSS-Core.git
     cd VSS-Core
+    
     bash configure.sh
 }
 
