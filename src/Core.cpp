@@ -6,7 +6,7 @@
  * file, You can obtain one at http://www.gnu.org/licenses/gpl-3.0/.
  */
 
-#include <CommandSender.h>
+#include <Communications/CommandSender.h>
 #include "Core.h"
 
 Core::Core(){
