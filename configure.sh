@@ -7,91 +7,100 @@
 # file, You can obtain one at http://www.gnu.org/licenses/gpl-3.0/.
 #
 
-DISTRO=`lsb_release -si`
-RELEASE=`lsb_release -sr`
-ARCHITECTURE=`uname -m`
+DISTRO=``
+RELEASE=``
+RELEASE_DEBIAN=``
+ARCHITECTURE=``
+COMPILE_TYPE=$1
 
 INSTALLED=0
 
-CMAKE_UBUNTU () {
-  sudo rm -R build
-  mkdir build
-  cd build
-  cmake ..
-  make package
-  sudo dpkg -i vss-joystick-0.1.1-Linux.deb
-  cd ..
+CMAKE () {
+    rm -R build
+    mkdir -p build
+    cd build
+    cmake ..
+    make
+    cd ..
 }
 
-CMAKE_MINT () {
-  sudo rm -R build
-  mkdir build
-  cd build
-  cmake ..
-  make package
-  sudo dpkg -i vss-joystick-0.1.1-Linux.deb
-  cd ..
-}
-
-CMAKE_DEBIAN () {
-  rm -R build
-  mkdir build
-  cd build
-  cmake ..
-  make package
-  dpkg -i vss-joystick-0.1.1-Linux.deb
-  cd ..
+CMAKE_INSTALL () {
+    rm -R build
+    mkdir -p build
+    cd build
+    cmake -D RELEASE=ON ..
+    make install
+    cd ..
 }
 
 INSTALL_UBUNTU_16_04 () {
-  sudo apt-get update && apt-get upgrade
-  sudo apt-get install pkg-config
-  sudo apt-get install g++ cmake libzmqpp3 libzmqpp-dev protobuf-compiler libprotobuf-dev libboost-all-dev
-  INSTALLED=1
+    apt-get update && apt-get upgrade
+    apt-get -y install pkg-config
+    apt-get -y install g++ cmake libzmqpp3 libzmqpp-dev protobuf-compiler libprotobuf-dev libboost-all-dev
+    INSTALLED=1
 }
 
 INSTALL_MINT_18_2 () {
-  sudo apt-get update && apt-get upgrade
-  sudo apt-get install pkg-config
-  sudo apt-get install g++ cmake libzmqpp3 libzmqpp-dev protobuf-compiler libprotobuf-dev libboost-all-dev
-  INSTALLED=1
+    apt-get update && apt-get upgrade
+    apt-get -y install pkg-config
+    apt-get -y install g++ cmake libzmqpp3 libzmqpp-dev protobuf-compiler libprotobuf-dev libboost-all-dev
+    INSTALLED=1
 }
 
 INSTALL_DEBIAN_9_2 () {
-  sudo apt-get update && apt-get upgrade
-  sudo apt-get install pkgconf
-  sudo apt-get install g++ cmake libzmq5 libzmq3-dev protobuf-compiler libprotobuf-dev libboost-all-dev
-  INSTALLED=1
+    apt-get update && apt-get upgrade
+    apt-get -y install pkgconf
+    apt-get -y install g++ cmake libzmq5 libzmq3-dev protobuf-compiler libprotobuf-dev libboost-all-dev
+    INSTALLED=1
+}
+
+INSTALL_BASE() {
+    apt-get update && apt-get upgrade
+    apt-get -y install lsb-release;
+
+    DISTRO=`lsb_release -si`
+    RELEASE=`lsb_release -sr`
+    RELEASE_DEBIAN=`lsb_release -sr | cut -c1-1`
+    ARCHITECTURE=`uname -m`
+}
+
+INIT_SUBMODULES() {
+    git submodule init;
+    git submodule update;
 }
 
 INSTALL () {
-  # Ubuntu
-  if [[ "$DISTRO" == "Ubuntu" ]] && [[ "$RELEASE" == "16.04" ]]; then
-    INSTALL_UBUNTU_16_04;
-    if [ $INSTALLED == 1 ]; then
-      CMAKE_UBUNTU;
-    fi
-  fi
+    INSTALL_BASE;
 
-  # Debian
-  if [[ "$DISTRO" == "Debian" ]] && [[ "$RELEASE" == "9.2" ]]; then
-    INSTALL_DEBIAN_9_2;
-    if [ $INSTALLED == 1 ]; then
-      CMAKE_DEBIAN;
+    # Ubuntu
+    if [[ "$DISTRO" == "Ubuntu" ]] && [[ "$RELEASE" == "16.04" ]]; then
+        INSTALL_UBUNTU_16_04;
     fi
-  fi
 
-  # Debian
-  if [[ "$DISTRO" == "LinuxMint" ]] && [[ "$RELEASE" == "18.2" ]]; then
-    INSTALL_MINT_18_2;
-    if [ $INSTALLED == 1 ]; then
-      CMAKE_MINT;
+    # Debian
+    if [[ "$DISTRO" == "Debian" ]] && [[ "$RELEASE" == "9.2" ]]; then
+        INSTALL_DEBIAN_9_2;
     fi
-  fi
 
-  if [[ $INSTALLED == 0 ]]; then
-    echo "Sistema Operacional Incompatível";
-  fi
+    # Debian
+    if [[ "$DISTRO" == "LinuxMint" ]] && [[ "$RELEASE" == "18.2" ]]; then
+        INSTALL_MINT_18_2;
+    fi
+
+    if [[ $INSTALLED == 0 ]]; then
+        echo "Sistema Operacional Incompatível";
+    fi
+
+    if [[ $INSTALLED == 1 ]]; then
+        INIT_SUBMODULES;
+
+        if [[ $COMPILE_TYPE == "development" ]];
+        then
+            CMAKE;
+        else
+            CMAKE_INSTALL;
+        fi
+    fi
 }
 
 INSTALL;

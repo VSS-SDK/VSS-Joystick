@@ -1,0 +1,2 @@
+/usr/bin/ar qc libvss-joystick-core.a  CMakeFiles/vss-joystick-core.dir/src/Core.cpp.o CMakeFiles/vss-joystick-core.dir/src/JoystickReader.cpp.o CMakeFiles/vss-joystick-core.dir/src/Main.cpp.o CMakeFiles/vss-joystick-core.dir/src/joystick/joystick.cc.o CMakeFiles/vss-joystick-core.dir/src/joystick/test.cc.o
+/usr/bin/ranlib libvss-joystick-core.a
