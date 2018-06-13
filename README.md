@@ -1,4 +1,4 @@
-# VSS-Joystick [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)][gpl3] [![Build Status](https://travis-ci.org/SIRLab/VSS-Joystick.svg?branch=master)][travis]
+# VSS-Joystick [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)][gpl3] [![Build Status](https://api.travis-ci.com/VSS-SDK/VSS-Joystick.svg?branch=master)][travis]
 
 [![Trello](https://img.shields.io/badge/Trello-SDK-blue.svg)][vss-sdk-trello]
 [![Slack](https://img.shields.io/badge/Slack-Channel-551a8b.svg)][slack]
@@ -29,7 +29,7 @@ Esse código está sob licença [GNU GENERAL PUBLIC LICENSE Version 3][gpl3], cu
 Você pode utilizar esse código. Caso o faça, nos informe.
 
 [gpl3]: http://www.gnu.org/licenses/gpl-3.0/
-[travis]: https://travis-ci.org/SIRLab/VSS-Joystick
+[travis]: https://travis-ci.com/VSS-SDK/VSS-Joystick
 [install]: https://github.com/SIRLab/VSS-Joystick/blob/master/INSTALL.md
 [vss-sdk]: http://sirlab.github.io/VSS-SDK
 [vss-sdk-trello]: https://trello.com/b/b4dVV6ug/vss-sdk
