@@ -40,8 +40,6 @@ void Core::communicationThreadWrapper(){
 			vss::WheelsCommand wheelsCommand;
 			left = joystickReader.getAxisLeft();
 
-			command.id = 0;
-			wheelsCommand.id = 0;
 			wheelsCommand.leftVel = static_cast<float>((left.axis[Y] + left.axis[X] * 0.2) * 0.5);
 			wheelsCommand.rightVel = static_cast<float>((left.axis[Y] - left.axis[X] * 0.2) * 0.5);
 
