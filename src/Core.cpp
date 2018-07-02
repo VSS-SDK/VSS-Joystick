@@ -10,12 +10,10 @@
 #include "Core.h"
 
 Core::Core(){
-	//! Simulador é definido como destino DEFAULT
-	type = SIMULATOR;
 }
 
-void Core::init( int type ){
-	this->type = type;
+void Core::init(vss::ExecutionConfig executionConfig){
+    this->executionConfig = executionConfig;
 
 	joystickThread = new thread( bind( &Core::joystickThreadWrapper, this ));
 	communicationThread = new thread( bind( &Core::communicationThreadWrapper, this ));
@@ -29,34 +27,38 @@ void Core::joystickThreadWrapper(){
 }
 
 void Core::communicationThreadWrapper(){
-	JoyAxis left;
+	if(executionConfig.environmentType == vss::EnvironmentType::Simulation)
+        runSimulation();
+	else
+	    runReal();
+}
 
-	if(type == SIMULATOR) {
-		commandSender = new vss::CommandSender();
-		commandSender->createSocket(vss::TeamType::Yellow);
+void Core::runSimulation() {
+    commandSender = new vss::CommandSender();
+    commandSender->createSocket(vss::TeamType::Yellow);
 
-		while(true) {
-			vss::Command command;
-			vss::WheelsCommand wheelsCommand;
-			left = joystickReader.getAxisLeft();
+    while(true) {
+        vss::Command command;
+        vss::WheelsCommand wheelsCommand;
+        left = joystickReader.getAxisLeft();
 
-			wheelsCommand.leftVel = static_cast<float>((left.axis[Y] + left.axis[X] * 0.2) * 0.5);
-			wheelsCommand.rightVel = static_cast<float>((left.axis[Y] - left.axis[X] * 0.2) * 0.5);
+        wheelsCommand.leftVel = static_cast<float>((left.axis[Y] + left.axis[X] * 0.2) * 0.5);
+        wheelsCommand.rightVel = static_cast<float>((left.axis[Y] - left.axis[X] * 0.2) * 0.5);
 
-			command.commands.push_back(wheelsCommand);
+        command.commands.push_back(wheelsCommand);
 
-			commandSender->sendCommand(command);
+        commandSender->sendCommand(command);
 
-			usleep( 1000 );
-		}
-	}else{
+        usleep( 1000 );
+    }
+}
 
-		while(true) {
-			left = joystickReader.getAxisLeft();
+void Core::runReal() {
+    while(true) {
+        left = joystickReader.getAxisLeft();
 
-			//! your own transmission module here
+        //! your own transmission module here
 
-			usleep( 33000 );
-		}
-	}
+        usleep( 33000 );
+    }
 }

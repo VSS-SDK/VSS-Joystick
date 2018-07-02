@@ -13,39 +13,32 @@
 #include <thread>
 #include <unistd.h>
 #include <functional>
-#include "Interfaces/ICommandSender.h"
 #include "JoystickReader.h"
+#include "Interfaces/ICommandSender.h"
+#include "Domain/ExecutionConfig.h"
 
 using namespace std;
 
-//! Essa classe é responsável por tratar de obter os dados de um jostick e enviar os comandos para o VSS-Simulator e robôs reais
 class Core {
-protected:
-
-	//! Interpretador de comandos de um joytick USB
-	JoystickReader joystickReader;
-	//! Interface de comunicação com o VSS-Simulator
-	vss::ICommandSender *commandSender;
-
-	//! Thread para obter os dados do joystick
-	thread *joystickThread;
-	//! Thread para enviar os dados para o VSS-Simualtor ou robôs reais
-	thread *communicationThread;
-
-	//! Tipo define o destino da mensagem: SIMULATOR OR REAL
-	int type;
-	//! Valores obtidos na leitura do analógico esquerdo de um joystick
-	JoyAxis left;
 public:
+    Core();
+    void init(vss::ExecutionConfig);
 
-	//! Construtor DEFAULT
-	Core();
-	//! Método responsável pela inicialização da comunicação e leitura do joystick
-	void init( int type );
-	//! Thread de leitura do joystick
-	void joystickThreadWrapper();
-	//! Thread de comunicação com o VSS-Simulator ou Robôs reais
-	void communicationThreadWrapper();
+protected:
+    void joystickThreadWrapper();
+    void communicationThreadWrapper();
+
+    void runSimulation();
+    void runReal();
+
+    JoystickReader joystickReader;
+    vss::ICommandSender *commandSender;
+
+    thread *joystickThread;
+    thread *communicationThread;
+
+    vss::ExecutionConfig executionConfig;
+    JoyAxis left;
 };
 
 #endif // _CORE_H_
