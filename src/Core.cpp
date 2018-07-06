@@ -7,56 +7,86 @@
  */
 
 #include <Communications/CommandSender.h>
+#include "Domain/Constants.h"
 #include "Core.h"
 
 Core::Core(){
-	//! Simulador é definido como destino DEFAULT
-	type = SIMULATOR;
 }
 
-void Core::init( int type ){
-	this->type = type;
+void Core::init(vss::ExecutionConfig executionConfig){
+    this->executionConfig = executionConfig;
 
-	joystickThread = new thread( bind( &Core::joystickThreadWrapper, this ));
-	communicationThread = new thread( bind( &Core::communicationThreadWrapper, this ));
+    joystickThread = new thread( bind( &Core::joystickThreadWrapper, this ));
+    communicationThread = new thread( bind( &Core::communicationThreadWrapper, this ));
 
-	joystickThread->join();
-	communicationThread->join();
+    joystickThread->join();
+    communicationThread->join();
 }
 
 void Core::joystickThreadWrapper(){
-	joystickReader.init();
+    joystickReader.init();
 }
 
 void Core::communicationThreadWrapper(){
-	JoyAxis left;
+    if(executionConfig.environmentType == vss::EnvironmentType::Simulation)
+        runSimulation();
+    else
+        runReal();
+}
 
-	if(type == SIMULATOR) {
-		commandSender = new vss::CommandSender();
-		commandSender->createSocket(vss::TeamType::Yellow);
+void Core::runSimulation() {
+    commandSender = new vss::CommandSender();
 
-		while(true) {
-			vss::Command command;
-			vss::WheelsCommand wheelsCommand;
-			left = joystickReader.getAxisLeft();
+    if(hasCustomAddress(executionConfig))
+        createCustomSocket();
+    else
+        commandSender->createSocket(executionConfig.teamType);
 
-			wheelsCommand.leftVel = static_cast<float>((left.axis[Y] + left.axis[X] * 0.2) * 0.5);
-			wheelsCommand.rightVel = static_cast<float>((left.axis[Y] - left.axis[X] * 0.2) * 0.5);
+    while(true) {
+        vss::Command command;
+        vss::WheelsCommand wheelsCommand;
+        left = joystickReader.getAxisLeft();
 
-			command.commands.push_back(wheelsCommand);
+        wheelsCommand.leftVel = static_cast<float>((left.axis[Y] + left.axis[X] * 0.2) * 0.5);
+        wheelsCommand.rightVel = static_cast<float>((left.axis[Y] - left.axis[X] * 0.2) * 0.5);
 
-			commandSender->sendCommand(command);
+        command.commands.push_back(wheelsCommand);
 
-			usleep( 1000 );
-		}
-	}else{
+        commandSender->sendCommand(command);
 
-		while(true) {
-			left = joystickReader.getAxisLeft();
+        usleep( 1000 );
+    }
+}
 
-			//! your own transmission module here
+void Core::createCustomSocket() {
+    if (executionConfig.teamType == vss::Yellow)
+        commandSender->createSocket(executionConfig.cmdYellowSendAddr);
+    else
+        commandSender->createSocket(executionConfig.cmdBlueSendAddr);
+}
 
-			usleep( 33000 );
-		}
-	}
+void Core::runReal() {
+    while(true) {
+        left = joystickReader.getAxisLeft();
+
+        std::cout << "Send commands to real robots" << std::endl;
+
+        usleep( 500000 );
+    }
+}
+
+bool Core::hasCustomAddress(vss::ExecutionConfig executionConfig) {
+    if(executionConfig.cmdYellowSendAddr.getIp() != vss::DEFAULT_CMD_SEND_ADDR)
+        return true;
+
+    if(executionConfig.cmdBlueSendAddr.getIp() != vss::DEFAULT_CMD_SEND_ADDR)
+        return true;
+
+    if(executionConfig.cmdYellowSendAddr.getPort() != vss::DEFAULT_CMD_YELLOW_PORT)
+        return true;
+
+    if(executionConfig.cmdBlueSendAddr.getPort() != vss::DEFAULT_CMD_BLUE_PORT)
+        return true;
+
+    return false;
 }

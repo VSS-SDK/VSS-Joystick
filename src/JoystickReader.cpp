@@ -16,30 +16,23 @@ JoystickReader::JoystickReader() {
 void JoystickReader::init(){
 	Joystick joystick( "/dev/input/js0" );
 
-	//! Caso um joystick esteja conectado.
 	if(joystick.isFound()) {
 		while(true) {
 			usleep( delay );
 
 			JoystickEvent event;
 			if(joystick.sample( &event )) {
-				//! Caso o evento enviado pelo joystick seja uma nova leitura do eixo X do analógico esquerdo
 				if (event.isAxis() && event.number == 0) {
 					left.axis[X] = event.value;
-
-					//! Normaliza o valor para algo entre 0 e 200
 					left.axis[X] = left.axis[X] / MAX_VAL * 200.0;
 				}
 
-				//! Leitura de evento caso seja do eixo Y no analogico esquerdo
 				if (event.isAxis() && event.number == 1) {
 					left.axis[Y] = event.value;
-
-					//! Normaliza o valor para algo entre 0 e 200
 					left.axis[Y] = left.axis[Y] / MAX_VAL * -200.0;
 				}
 
-				left.show();
+				// left.show();
 			}
 		}
 	}

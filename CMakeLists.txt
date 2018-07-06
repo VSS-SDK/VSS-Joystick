@@ -21,10 +21,9 @@ set (VSS_CORE libvss-core.so)
 link_directories(usr/lib)
 include_directories(usr/local/include)
 
-
 ADD_LIBRARY(vss-joystick-core ${SRCS_CPP} ${SRCS_CC} ${H} ${HH})
 TARGET_LINK_LIBRARIES(vss-joystick-core ${VSS_CORE} ${PROTOBUF_LIBRARY})
-TARGET_LINK_LIBRARIES(vss-joystick-core LINK_PUBLIC ${Boost_LIBRARIES})
+TARGET_LINK_LIBRARIES(vss-joystick-core LINK_PUBLIC ${Boost_PROGRAM_OPTIONS_LIBRARY})
 target_include_directories(vss-joystick-core PUBLIC ${ZeroMQ_INCLUDE_DIR})
 target_link_libraries(vss-joystick-core PUBLIC ${ZeroMQ_LIBRARY})
 
