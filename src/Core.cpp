@@ -7,6 +7,7 @@
  */
 
 #include <Communications/CommandSender.h>
+#include "Domain/Constants.h"
 #include "Core.h"
 
 Core::Core(){
@@ -15,27 +16,31 @@ Core::Core(){
 void Core::init(vss::ExecutionConfig executionConfig){
     this->executionConfig = executionConfig;
 
-	joystickThread = new thread( bind( &Core::joystickThreadWrapper, this ));
-	communicationThread = new thread( bind( &Core::communicationThreadWrapper, this ));
+    joystickThread = new thread( bind( &Core::joystickThreadWrapper, this ));
+    communicationThread = new thread( bind( &Core::communicationThreadWrapper, this ));
 
-	joystickThread->join();
-	communicationThread->join();
+    joystickThread->join();
+    communicationThread->join();
 }
 
 void Core::joystickThreadWrapper(){
-	joystickReader.init();
+    joystickReader.init();
 }
 
 void Core::communicationThreadWrapper(){
-	if(executionConfig.environmentType == vss::EnvironmentType::Simulation)
+    if(executionConfig.environmentType == vss::EnvironmentType::Simulation)
         runSimulation();
-	else
-	    runReal();
+    else
+        runReal();
 }
 
 void Core::runSimulation() {
     commandSender = new vss::CommandSender();
-    commandSender->createSocket(vss::TeamType::Yellow);
+
+    if(hasCustomAddress(executionConfig))
+        createCustomSocket();
+    else
+        commandSender->createSocket(executionConfig.teamType);
 
     while(true) {
         vss::Command command;
@@ -53,12 +58,35 @@ void Core::runSimulation() {
     }
 }
 
+void Core::createCustomSocket() {
+    if (executionConfig.teamType == vss::Yellow)
+        commandSender->createSocket(executionConfig.cmdYellowSendAddr);
+    else
+        commandSender->createSocket(executionConfig.cmdBlueSendAddr);
+}
+
 void Core::runReal() {
     while(true) {
         left = joystickReader.getAxisLeft();
 
-        //! your own transmission module here
+        std::cout << "Send commands to real robots" << std::endl;
 
-        usleep( 33000 );
+        usleep( 500000 );
     }
+}
+
+bool Core::hasCustomAddress(vss::ExecutionConfig executionConfig) {
+    if(executionConfig.cmdYellowSendAddr.getIp() != vss::DEFAULT_CMD_SEND_ADDR)
+        return true;
+
+    if(executionConfig.cmdBlueSendAddr.getIp() != vss::DEFAULT_CMD_SEND_ADDR)
+        return true;
+
+    if(executionConfig.cmdYellowSendAddr.getPort() != vss::DEFAULT_CMD_YELLOW_PORT)
+        return true;
+
+    if(executionConfig.cmdBlueSendAddr.getPort() != vss::DEFAULT_CMD_BLUE_PORT)
+        return true;
+
+    return false;
 }

@@ -28,6 +28,8 @@ protected:
     void joystickThreadWrapper();
     void communicationThreadWrapper();
 
+    bool hasCustomAddress(vss::ExecutionConfig);
+    void createCustomSocket();
     void runSimulation();
     void runReal();
 

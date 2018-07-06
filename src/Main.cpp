@@ -9,22 +9,22 @@
 #include "Core.h"
 #include "Domain/ExecutionConfig.h"
 #include "Interfaces/IStdinInterpreter.h"
-#include "Interfaces/IFluentStdinInterpreterBuilder.h"
-#include "Builders/FluentStdinInterpreterBuilder.h"
+#include "Interfaces/IStdinInterpreterBuilder.h"
+#include "Builders/StdinInterpreterBuilder.h"
 #include "Interpreters/StdinInterpreter.h"
 
 vss::ExecutionConfig loadExecutionConfig(int argc, char** argv){
-    auto fluentStdinInterpreterBuilder = new vss::FluentStdinInterpreterBuilder();
+    auto stdinInterpreterBuilder = new vss::StdinInterpreterBuilder();
 
-    fluentStdinInterpreterBuilder
-            ->enableBlueCommandCommunicationPort()
-            ->enableBlueCommandSenderAddress()
-            ->enableYellowCommandCommunicationPort()
-            ->enableYellowCommandSenderAddress()
-            ->enableTeamType()
-            ->enableEnvironmentType();
+    stdinInterpreterBuilder
+            ->onBlueCmdPort()
+            ->onBlueCmdSendAddr()
+            ->onYellowCmdPort()
+            ->onYellowCmdSendAddr()
+            ->onTeamType()
+            ->onEnvironmentType();
 
-    auto stdinInterpreter = fluentStdinInterpreterBuilder->buildInterpreter();
+    auto stdinInterpreter = stdinInterpreterBuilder->buildInterpreter();
 
     return stdinInterpreter->extractExecutionConfig(argc, argv);
 }
@@ -32,6 +32,11 @@ vss::ExecutionConfig loadExecutionConfig(int argc, char** argv){
 int main( int argc, char** argv ){
     auto executionConfig = loadExecutionConfig(argc, argv);
 
+    if(!executionConfig.isValidConfiguration)
+        return 0;
+
     Core core;
     core.init(executionConfig);
+
+    return 0;
 }
