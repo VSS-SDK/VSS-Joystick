@@ -32,7 +32,7 @@ void JoystickReader::init(){
 					left.axis[Y] = left.axis[Y] / MAX_VAL * -200.0;
 				}
 
-				// left.show();
+				left.show();
 			}
 		}
 	}
